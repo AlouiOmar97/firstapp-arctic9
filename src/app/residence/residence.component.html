@@ -1,0 +1,21 @@
+<h1>Residence List</h1>
+<div>
+    <ul>
+        <li *ngFor="let residence of residencesList" >
+            {{ residence.name }}
+            {{ residence.address }}
+        </li>
+    </ul>
+</div>
+<select name="residence" id="residence" [(ngModel)]="selectedResidence" >
+    <option *ngFor="let residence of residencesList" value="{{residence.id}}">
+        {{residence.name}}
+    </option>
+</select>
+<button (click)="displayAppartements()"  class="btn btn-primary" >Display Appartements</button>
+<p *ngIf="selectedResidence" >Selected Residence Id : {{ selectedResidence }}</p>
+<ul>
+    <li *ngFor="let appartement of selectedAppartements" >
+        {{ appartement.terrasse }}
+    </li>
+</ul>

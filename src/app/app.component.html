@@ -1,0 +1,11 @@
+<app-nav></app-nav>
+Content <br>
+{{ title | lowercase | uppercase }}<br>
+
+<p> <b>This is a number : </b> {{ nb + 2 }} </p>
+<p>Result : {{ nb + methodA()}} </p>
+<input type="text" [(ngModel)]="msg" >
+<button (click)="methodB()" [disabled]="x" class="btn btn-primary" >Test</button>
+{{ msg }}
+<app-residence></app-residence>
+<app-footer></app-footer>
