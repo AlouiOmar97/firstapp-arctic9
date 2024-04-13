@@ -9,13 +9,14 @@ import { Appartement } from '../core/models/appartement';
 })
 export class ResidenceComponent implements OnInit {
 
+  searchSurfece!: number
   selectedResidence!: number
   selectedAppartements!: Appartement[]
   residencesList: Residence[]=[ 
 
     {id: 1, name: "Residence 1", address: "Address 1", image:"image 1"}, 
 
-    {id: 2, name: "Residence 2", address: "Address 2", image:"image 2"}, 
+    {id: 2555, name: "Residence 2", address: "Address 2", image:"image 2"}, 
 
     {id: 3, name: "Residence 3", address: "Address 3", image:"image 3"} 
 
@@ -41,13 +42,21 @@ export class ResidenceComponent implements OnInit {
   ] 
 
   displayAppartements(){
-    let appList=[]
+    let appList: Appartement[]=[]
     for (let i = 0; i < this.appartementsList.length; i++) {
       if(this.appartementsList[i].residence.id == this.selectedResidence) {
         appList.push(this.appartementsList[i])
       }    
     }
     this.selectedAppartements=appList
+  }
+
+  buyAppartement(id: number){
+    for (let i = 0; i < this.appartementsList.length; i++) {
+      if (this.appartementsList[i].id == id) {
+        this.appartementsList[i].status=false
+      }
+    }
   }
   constructor() { }
 

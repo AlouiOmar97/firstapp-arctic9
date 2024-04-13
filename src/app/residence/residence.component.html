@@ -1,21 +1,41 @@
-<h1>Residence List</h1>
+<div class="container">
+    <h1>Residence List</h1>
 <div>
-    <ul>
-        <li *ngFor="let residence of residencesList" >
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let residence of residencesList" >
             {{ residence.name }}
             {{ residence.address }}
+            <a [routerLink]="['/residence/details/',residence.id]">Details</a>
         </li>
     </ul>
 </div>
-<select name="residence" id="residence" [(ngModel)]="selectedResidence" >
-    <option *ngFor="let residence of residencesList" value="{{residence.id}}">
-        {{residence.name}}
-    </option>
+<select name="residence" id="residece" [(ngModel)]="selectedResidence" >
+    <option *ngFor="let r of residencesList" [value]="r.id"> {{ r.name }} </option>
 </select>
-<button (click)="displayAppartements()"  class="btn btn-primary" >Display Appartements</button>
-<p *ngIf="selectedResidence" >Selected Residence Id : {{ selectedResidence }}</p>
-<ul>
-    <li *ngFor="let appartement of selectedAppartements" >
-        {{ appartement.terrasse }}
-    </li>
-</ul>
+<button (click)="displayAppartements()" class="btn btn-primary" >Display Appartements</button>
+<p *ngIf="selectedResidence" ><b>Selected Residence ID : </b> {{selectedResidence}} </p>
+<div>
+    <div *ngFor="let a of selectedAppartements">
+        <div>
+            <p><b>Terrasse : </b> {{ a.terrasse }} </p>
+            <p><b>Surface : </b> {{ a.surface }} </p>
+            <button (click)="buyAppartement(a.id)" [disabled]="!a.status" class="btn btn-success">Buy</button>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h1>Appartement List</h1>
+    <label for="search">Search :</label>
+    <input type="number" name="search" id="search" [(ngModel)]="searchSurfece" >
+    <div *ngFor="let a of appartementsList">
+        <div *ngIf="a.surface <= searchSurfece" >
+            <p><b>Terrasse : </b> {{ a.terrasse }} </p>
+            <p><b>Surface : </b> {{ a.surface }} </p>
+            <button (click)="buyAppartement(a.id)" [disabled]="!a.status" class="btn btn-success">Buy</button>
+            <hr>
+        </div>
+    </div>
+</div>
+</div>
