@@ -10,7 +10,7 @@
             </div>
             <div *ngIf="category!.touched && category!.errors?.['required']" class="alert alert-danger m-2" >Category is required.</div>
             <div *ngIf="category!.touched && category!.errors?.['minlength']" class="alert alert-danger m-2" >Category must have at least 3 caracters.</div>
-            <div *ngIf="category!.touched && category!.errors?.['pattern']" class="alert alert-danger m-2" >Category must have only letters.</div>
+            <div *ngIf="category!.touched && category!.errors?.['pattern']" class="alert alert-danger m-2" >Category must have only lowercase letters.</div>
           </div>
         </div>
         <div class="row mb-3">

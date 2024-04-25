@@ -3,11 +3,13 @@ import { Residence } from '../core/models/residence';
 import { Appartement } from '../core/models/appartement';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LogService } from '../services/log.service';
 
 @Component({
   selector: 'app-add-appartement',
   templateUrl: './add-appartement.component.html',
-  styleUrls: ['./add-appartement.component.css']
+  styleUrls: ['./add-appartement.component.css'],
+  providers:[]
 })
 export class AddAppartementComponent implements OnInit {
   residence!: Residence
@@ -25,7 +27,7 @@ export class AddAppartementComponent implements OnInit {
   }
   addAppartementForm!: FormGroup
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private logService: LogService) { }
 
   ngOnInit(): void {
     this.addAppartementForm= new FormGroup({
@@ -39,9 +41,12 @@ export class AddAppartementComponent implements OnInit {
 
   addAppartement(){
     console.log("add Appartement");
-    console.log(this.addAppartementForm.value);
-    console.log(this.addAppartementForm.value.surface);
-    //this.router.navigateByUrl('/appartement')
+   // console.log(this.addAppartementForm.value);
+   // console.log(this.addAppartementForm.value.surface);
+   this.logService.log(this.addAppartementForm.value)
+   this.logService.warn(this.addAppartementForm.value)
+   this.logService.error(this.addAppartementForm.value)
+   //this.router.navigateByUrl('/appartement')
     
   }
 }

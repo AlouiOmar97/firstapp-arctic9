@@ -13,6 +13,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ResidenceDetailsComponent } from './residence-details/residence-details.component';
 import { AnnonceModule } from './annonce/annonce.module';
 import { AddAppartementComponent } from './add-appartement/add-appartement.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AddAppartementComponent } from './add-appartement/add-appartement.compo
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AnnonceModule,
     AppRoutingModule
   ],
